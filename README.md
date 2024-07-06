@@ -16,6 +16,10 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
+![image](https://github.com/rosentte104/pokedex/assets/62159199/aa5ce4e4-2391-4b56-9183-70b5f5ed4a22)
+![image](https://github.com/rosentte104/pokedex/assets/62159199/ce72ed8d-832a-4253-86ca-26c59c3593c5)
+![image](https://github.com/rosentte104/pokedex/assets/62159199/a43c2322-ed85-4a90-9f83-4b6bfb9163f9)
+
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
