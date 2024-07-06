@@ -1,13 +1,32 @@
 <template>
   <div v-if="pokemon" class="pokemon-detail">
     <Menu />
+    <button @click="goBack" class="back-button">Back</button>
     <h1>{{ pokemon.name }}</h1>
     <img :src="pokemon.sprites.front_default" alt="pokemon image" />
     <div class="pokemon-stats">
       <p><strong>Height:</strong> {{ pokemon.height }}</p>
       <p><strong>Weight:</strong> {{ pokemon.weight }}</p>
+      <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
+      <p><strong>Abilities:</strong></p>
+      <ul>
+        <li v-for="ability in pokemon.abilities" :key="ability.ability.name">
+          {{ ability.ability.name }}
+        </li>
+      </ul>
+      <p><strong>Stats:</strong></p>
+      <ul>
+        <li v-for="stat in pokemon.stats" :key="stat.stat.name">
+          {{ stat.stat.name }}: {{ stat.base_stat }}
+        </li>
+      </ul>
+      <p><strong>Types:</strong></p>
+      <ul>
+        <li v-for="type in pokemon.types" :key="type.type.name">
+          {{ type.type.name }}
+        </li>
+      </ul>
     </div>
-    <button @click="goBack" class="back-button">Back</button>
   </div>
 </template>
 
@@ -16,9 +35,6 @@ import Menu from '~/components/Menu.vue';
 import axios from 'axios';
 
 export default {
-  components: {
-    Menu
-  },
   async asyncData({ params }) {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
@@ -54,16 +70,26 @@ export default {
 }
 .pokemon-stats {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   margin-top: 20px;
 }
 .pokemon-stats p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.pokemon-stats ul {
+  list-style: none;
+  padding: 0;
+}
+.pokemon-stats ul li {
   background-color: #f5f5f5;
   border: 2px solid #ccc;
   border-radius: 4px;
   padding: 10px;
-  min-width: 100px;
+  min-width: 200px;
   text-align: left;
+  margin-bottom: 5px;
 }
 </style>
