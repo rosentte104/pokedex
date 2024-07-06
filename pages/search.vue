@@ -1,15 +1,18 @@
 <template>
   <div>
+    <Menu />
     <SearchBar @search="handleSearch" :error="searchError" />
   </div>
 </template>
 
 <script>
+import Menu from '~/components/Menu.vue';
 import SearchBar from '~/components/SearchBar.vue';
 import axios from 'axios';
 
 export default {
   components: {
+    Menu,
     SearchBar
   },
   data() {

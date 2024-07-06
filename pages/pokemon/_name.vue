@@ -1,5 +1,6 @@
 <template>
   <div v-if="pokemon" class="pokemon-detail">
+    <Menu />
     <h1>{{ pokemon.name }}</h1>
     <img :src="pokemon.sprites.front_default" alt="pokemon image" />
     <div class="pokemon-stats">
@@ -11,9 +12,13 @@
 </template>
 
 <script>
+import Menu from '~/components/Menu.vue';
 import axios from 'axios';
 
 export default {
+  components: {
+    Menu
+  },
   async asyncData({ params }) {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
@@ -33,7 +38,6 @@ export default {
 <style scoped>
 .pokemon-detail {
   text-align: center;
-  padding: 20px;
 }
 .back-button {
   background-color: #333;
