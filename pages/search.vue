@@ -1,7 +1,6 @@
 <template>
   <div>
     <SearchBar @search="handleSearch" :error="searchError" />
-    <div v-if="searchError" class="error">{{ searchError }}</div>
   </div>
 </template>
 

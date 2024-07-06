@@ -6,9 +6,7 @@
       <p><strong>Height:</strong> {{ pokemon.height }}</p>
       <p><strong>Weight:</strong> {{ pokemon.weight }}</p>
     </div>
-  </div>
-  <div v-else>
-    <p>Pokémon not found.</p>
+    <button @click="goBack" class="back-button">Back</button>
   </div>
 </template>
 
@@ -23,6 +21,11 @@ export default {
     } catch (error) {
       return { pokemon: null };
     }
+  },
+  methods: {
+    goBack() {
+      this.$router.back();
+    }
   }
 };
 </script>
@@ -31,6 +34,19 @@ export default {
 .pokemon-detail {
   text-align: center;
   padding: 20px;
+}
+.back-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+.back-button:hover {
+  background-color: #555;
 }
 .pokemon-stats {
   display: flex;

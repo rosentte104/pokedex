@@ -2,7 +2,6 @@
   <div>
     <Menu />
     <SearchBar @search="handleSearch" :error="searchError" />
-    <div v-if="searchError" class="error">{{ searchError }}</div>
     <div class="pokemon-list">
       <div
         v-for="pokemon in pokemons"
